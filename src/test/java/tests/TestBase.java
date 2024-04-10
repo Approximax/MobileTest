@@ -33,9 +33,9 @@ public class TestBase {
         System.out.println(sessionId);
 
 //        Attach.screenshotAs("Last screenshot"); // todo fix
-//        Attach.pageSource();
+        Attach.pageSource();
         closeWebDriver();
 
-//        Attach.addVideo(sessionId);
+        Attach.addVideo(sessionId);
     }
 }
