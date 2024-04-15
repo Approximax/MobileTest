@@ -1,5 +1,7 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -9,17 +11,23 @@ import static io.appium.java_client.AppiumBy.accessibilityId;
 import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
 
+@Tag("mobile")
 public class WikipediaMobileTest extends TestBase {
 
     @Test
+    @DisplayName("Проверка выдачи поискового запроса")
     void successfulSearchTest() {
         step("Ввести поисковой запрос", () -> {
             $(accessibilityId("Search Wikipedia")).click();
             $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Appium");
         });
 
-        step("Проверка соответствия поисковой выдачи ранее введенному запросу", () -> {
+        step("Проверка наличия в поисковой выдаче результатов", () -> {
             $$(id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0));
         });
     }
+
+//    @Test
+//    @DisplayName("")
+//    void
 }
